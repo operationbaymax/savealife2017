@@ -16,6 +16,7 @@
 		font-size: 100%;
 		font: inherit;
 		vertical-align: baseline;
+		background-color:red;
 	}
 
 	article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
@@ -24,7 +25,6 @@
 
 	body {
 		line-height: 1;
-		background-color:red;
 	}
 
 	ol, ul {
