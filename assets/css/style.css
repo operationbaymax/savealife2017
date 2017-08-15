@@ -1,204 +1,87 @@
-*, *:before, *:after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+@import "compass/css3";
+
+// Variables
+$dark: #282828;
+$pink: #fc2161;
+$pink-d: darken($pink, 15%);
+$green: #77BD42;
+$green-d: darken($green, 15%);
+
+// Fonts
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400);
+
+
+// Get to business
 body {
-  background: #24282C;
+  background-color: #777;
+  background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAQAAABuBnYAAAAAU0lEQVQIHQXBwRGDIBAAwO2/AMcCDHAcPjIRxjJ8Je1kl1uqUgphsWu6w0sIG6npLpcUBql4e/wsVRKabrkNTacIYbMrwsF06rqUhsnXVKVT+Hj+Ue4rPSONk4kAAAAASUVORK5CYII=);
+  padding-top: 80px;
+  text-align: center;
 }
 
-$w: 280px;
-$h: 120px;
-$br: 50px;
-$outerOffset: 5px;
-$animTime: 0.5s;
-$dotS: 8px;
-$dotLeft: 204px;
-$dotLeftOffset: -125px;
-$offS: 64px;
-$cubIn: cubic-bezier(.52,-0.96,.51,1.28);
-$cubOut: cubic-bezier(.67,-0.16,.47,1.61);
+.flipper-container {
+  text-align: center;
+  margin-top: 40px;
+  @include perspective(1000);
+}
 
-@mixin switchOn() {
-  .switch__checkbox:checked ~ .switch__label & {
-    @content;
+.flipper {
+  display: inline-block;
+  position: relative;
+  text-decoration: none;
+  font-family: 'Montserrat', arial, sans-serif;
+  font-weight: 400;
+  text-transform: uppercase;
+  width: 11em; height: 4.5em;
+  background-color: $dark;
+  box-shadow: 0 3px 5px $dark;
+  @include transition(all 0.6s cubic-bezier(0.37, 0.74, 0.15, 1.65));
+  @include transform-style(preserve-3d);
+
+   &:target {
+    @include transform(rotateX(90deg), translateZ(50%));
   }
 }
 
-.switch {
+.front-face, .back-face {
   position: absolute;
-  left: 50%;
-  top: 50%;
-  width: $w;
-  height: $h;
-  margin-left: $w/-2;
-  margin-top: $h/-2;
-  border-radius: $br;
-  background: #cfcfcf;
+  width: 100%; height: 100%;
+  top: 0; left: 0;
+  padding-right: 70px;
+  letter-spacing: 2px;
+  line-height: 4.5em;
+  @include border-radius(2px);
+  @include backface-visibility(hidden);
 
   &:before {
-    content: "";
-    z-index: -1;
+    content: attr(data-icon);
+    font-size: 30px;
     position: absolute;
-    left: -$outerOffset;
-    top: -$outerOffset;
-    width: $w + $outerOffset*2;
-    height: $h + $outerOffset*2;
-    border-radius: $br + $outerOffset;
-    background: #314239;
-    transition: background-color 0.3s;
-  }
-
-  &:hover:before {
-    background: #4C735F;
-  }
-
-  &__checkbox {
-    z-index: -10;
-    position: absolute;
-    left: 0;
-    top: 0;
-    opacity: 0;
-  }
-
-  &__label {
-    z-index: 1;
-    overflow: hidden;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border-radius: $br;
-    cursor: pointer;
-  }
-
-  &__bg {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: $w * 3;
-    height: 100%;
-    background: linear-gradient(90deg, #14DCD6 0, #10E7BD $w, #EF9C29 $w*2, #E76339 100%);
-    transition: transform $animTime;
-    transform: translate3d($w*-2,0,0);
-
-    @include switchOn {
-      transform: translate3d(0,0,0);
-    }
-  }
-
-  &__dot {
-    position: absolute;
-    left: $dotLeft;
-    top: 50%;
-    width: $dotS;
-    height: $dotS;
-    margin-left: $dotS/-2;
-    margin-top: $dotS/-2;
-    border-radius: 50%;
-    background: #fff;
-    transition: transform $animTime;
-    transform: translate3d(0,0,0);
-
-    @include switchOn {
-      transform: translate3d($dotLeftOffset,0,0);
-    }
-  }
-
-  &__on {
-    position: absolute;
-    left: 177px;
-    top: 35px;
-    width: 30px;
-    height: 56px;
-    transition: transform $animTime;
-    transform: translate3d(0,0,0);
-
-    @include switchOn {
-      transform: translate3d($dotLeftOffset,0,0);
-    }
-
-    &__inner {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      transition: transform $animTime/2 0s $cubIn;
-      transform-origin: 100% 50%;
-      transform: rotate(45deg) scale(0) translateZ(0);
-
-      @include switchOn {
-        transition: transform $animTime/2 $animTime/2 $cubOut;
-        transform: rotate(45deg) scale(1) translateZ(0);
-      }
-
-      &:before,
-      &:after {
-        content: "";
-        position: absolute;
-        border-radius: $dotS/2;
-        background: #fff;
-      }
-      &:before {
-        left: 0;
-        bottom: 0;
-        width: 100%;
-        height: $dotS+1px;
-      }
-      &:after {
-        right: 0;
-        top: 0;
-        width: $dotS+1px;
-        height: 100%;
-      }
-    }
-  }
-
-  &__off {
-    position: absolute;
-    left: $dotLeft;
-    top: 50%;
-    width: $offS;
-    height: $offS;
-    margin-left: $offS/-2;
-    margin-top: $offS/-2;
-    transition: transform $animTime;
-    transform: translate3d(0,0,0);
-
-    @include switchOn {
-      transform: translate3d($dotLeftOffset,0,0);
-    }
-
-    &:before,
-    &:after {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 50%;
-      width: 100%;
-      height: $dotS;
-      margin-top: $dotS/-2;
-      border-radius: $dotS/2;
-      background: #fff;
-      transition: transform $animTime/2 $animTime/2;
-
-      @include switchOn {
-        transition-delay: 0s;
-      }
-    }
-    &:before {
-      transform: rotate(45deg) scaleX(1) translateZ(0);
-
-      @include switchOn {
-        transform: rotate(45deg) scaleX(0) translateZ(0);
-      }
-    }
-    &:after {
-      transition-timing-function: $cubOut;
-      transform: rotate(-45deg) scaleX(1) translateZ(0);
-
-      @include switchOn {
-        transition-timing-function: ease;
-        transform: rotate(-45deg) scaleX(0) translateZ(0);
-      }
-    }
+    top: 0; right: 0;
+    height: 100%; width: 70px;
+    border-radius: 0 2px 2px 0;
   }
 }
+
+.front-face {
+  background-color: $pink;
+  color: #fff;
+  text-shadow: 0 1px 1px darken($pink, 20%);
+  @include transform(rotateX(0deg)translateZ(2.25em));
+
+  &:before {
+    @include background-image(linear-gradient(45deg,       $pink-d 0%, #eb1f56 50%, #f91858 50%, $pink));
+  }
+
+
+}
+
+.back-face {
+  background-color: $green;
+  color: $green-d;
+  @include transform(rotateX(-90deg)translateZ(2.25em));
+
+  &:before {
+    @include background-image(linear-gradient(45deg,       $green-d 0%, #76bc42 50%, #7dbd4c 50%, $green));
+  }
+}git 
