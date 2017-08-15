@@ -1,4 +1,4 @@
-@import "compass/css3";
+@import "assets/style.css";
 
 // Variables
 $dark: #282828;
@@ -84,4 +84,4 @@ body {
   &:before {
     @include background-image(linear-gradient(45deg,       $green-d 0%, #76bc42 50%, #7dbd4c 50%, $green));
   }
-}git 
+}git
