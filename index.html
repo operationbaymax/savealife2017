@@ -1,21 +1,31 @@
 <!DOCTYPE HTML>
-
 <html>
 	<head>
 		<title>Save A Life</title>
-		<meta charset="utf-8" />
+		<meta charset="utf-8"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+		<!--script for baymax's voice-->
+		<script>
+		    function play() {
+		        var audio = document.getElementById('audio');
+		        if (audio.paused) {
+		            audio.play();
+		        }else{
+		            audio.pause();
+		            audio.currentTime = 0
+		        }
+		    }
+		</script>
 	</head>
-	<body class="landing">
 
+	<body class="landing">
 		<!-- Page Wrapper -->
 			<div id="page-wrapper">
-
 				<!-- Header -->
 					<header id="header" class="alt">
 						<h1><a href="index.html">Save A Life</a></h1>
@@ -28,8 +38,6 @@
 											<li><a href="index.html">Home</a></li>
 											<li><a href="generic.html">Anatomy</a></li>
 											<li><a href="elements.html">First Aid</a></li>
-
-
 											<li><a href="login.html">Admin</a></li>
 										</ul>
 									</div>
@@ -42,19 +50,22 @@
 					<section id="banner">
 						<div class="inner">
 							<h2>Save A Life</h2>
+							<audio src="bmv.mp3" id="audio"></audio>
 							<p>OPERATION BAYMAX</p>
-							<button class="w3-button w3-circle">•—•</button>
+							<button class="w3-button w3-circle" id="play" onclick="play()">•—•</button>
 
 						</div>
-						<a href="#one" class="more scrolly">Learn More</a>
+						<a href="#nextPage" class="more scrolly">Learn More</a>
 					</section>
 
 				<!-- One -->
-					<section id="one" class="wrapper style1 special">
+					<section id="nextPage" class="wrapper style1 special">
 						<div class="inner">
 							<header class="major">
 								<h2>Lets Save the World</h2>
-								<p>WE NEED INFO HERE</p>
+								<p style="text-transform: uppercase;">
+									By learning about what <b>you</b> can do and how your body works<br><b>you</b> have the potential to <b>save a life</b> one day
+								</p>
 							</header>
 							<!-- <ul class="icons major">
 								<li><span class="icon fa-diamond major style1"><span class="label">Lorem</span></span></li>
