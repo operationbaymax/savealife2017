@@ -87,3 +87,6 @@ input:active, input:focus, textarea:active, textarea:focus {
   color: #7584A2;
   padding: 1em;
 }
+
+div.hide { display:none; [your properties]; }
+div.show { [your properties]; }

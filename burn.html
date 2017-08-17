@@ -131,10 +131,39 @@
               <label class="switch centeralign">
               <input class="centeralign" type="checkbox" style="margin: 0 auto;">
               <span class="slider round"></span>
-							<a onclick="showText('text1','text2')" href="javascript:void(0);">Major</a>
-							<div id="text1" class="hide"> This is a Major burn </div>
+							<a href="#" onclick="show('div1')">MAJOR</a>
+							<a href="#" onclick="show('div2')">MINOR</a>
+
+							<div id="div1">Major burn info</div>
+							<div id="div2" style="display:none;">Minor burn info</div>
+
+							<script>
+
+							    var currentDiv = document.getElementById("div1");
+							    function show(divID) {
+
+							        var div = document.getElementById(divID);
+
+							        currentDiv.style.display = "none";
+							        div.style.display = "block";
+
+							        currentDiv = div;
+							    }
+
+							</script>
+														<!-- <a onclick="showText('text1','text2')" href="javascript:void(0);">Major</a>
+							<div id="text1" class="hide"> </div>
 							<a onclick="showText('text2','text1')" href="javascript:void(0);">Minor</a>
-							<div id="text2" class="hide"> This is a Minor Burn </div>
+							<div id="text2" class="hide">  </div>
+
+
+							<script>
+							function showText(show,hide)
+							{
+							    document.getElementById(show).className = "show";
+							    document.getElementById(hide).className = "hide";
+							}
+							</script> -->
 
             </label>
             </div>

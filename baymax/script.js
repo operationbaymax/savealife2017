@@ -129,3 +129,10 @@ function respond(val) {
 
   $("#spokenResponse").addClass("is-active").find(".spoken-response__text").html(val);
 }
+
+
+function showText(show,hide)
+{
+    document.getElementById(show).className = "show";
+    document.getElementById(hide).className = "hide";
+}
