@@ -10,6 +10,17 @@
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+		<script>
+    function play() {
+        var audio = document.getElementById('audio');
+        if (audio.paused) {
+            audio.play();
+        }else{
+            audio.pause();
+            audio.currentTime = 0
+        }
+    }
+</script>
 	</head>
 	<body class="landing">
 
@@ -44,7 +55,8 @@
 						<div class="inner">
 							<h2>Save A Life</h2>
 							<p>OPERATION BAYMAX</p>
-							<button class="w3-button w3-circle">•—•</button>
+							<audio src="bmv.mp3" id="audio"></audio>
+							<button class="w3-button w3-circle" id="play" onclick="play()">•—•</button>
 
 						</div>
 						<a href="#one" class="more scrolly">Learn More</a>
