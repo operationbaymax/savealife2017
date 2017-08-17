@@ -90,3 +90,7 @@ input:active, input:focus, textarea:active, textarea:focus {
 
 div.hide { display:none; [your properties]; }
 div.show { [your properties]; }
+
+.hidden{
+  display: none
+}
