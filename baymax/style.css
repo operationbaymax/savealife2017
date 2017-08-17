@@ -92,5 +92,5 @@ div.hide { display:none; [your properties]; }
 div.show { [your properties]; }
 
 .hidden{
-  display: none
+  display: none;
 }
