@@ -128,29 +128,29 @@
 
               <div style="text-align:center"> <h1><b>Is It A Major Or Minor Burn?</b></h1>
               <!--SVG-->
-              <        <label class="switch centeralign">
-				              <input class="centeralign" type="checkbox" style="margin: 0 auto;" onclick= "show('div1')" onclick="show('div2')">
-				              <span class="slider round"></span>
-											<!-- <a href="#" onclick="show('div1')">MAJOR</a>
-											<a href="#" onclick="show('div2')">MINOR</a> -->
+              <!-- <label class="switch centeralign">
+              <input class="centeralign" type="checkbox" style="margin: 0 auto;">
+              <span class="slider round"></span> -->
+							<a href="#" onclick="show('div1')">MAJOR</a>
+							<a href="#" onclick="show('div2')">MINOR</a>
 
-											<div id="div1">Major burn info</div>
-											<div id="div2" style="display:none;">Minor burn info</div>
+							<div id="div1">Major burn info</div>
+							<div id="div2" style="display:none;">Minor burn info</div>
 
-											<script>
+							<script>
 
-											    var currentDiv = document.getElementById("div1");
-											    function show(divID) {
+							    var currentDiv = document.getElementById("div1");
+							    function show(divID) {
 
-											        var div = document.getElementById(divID);
+							        var div = document.getElementById(divID);
 
-											        currentDiv.style.display = "none";
-											        div.style.display = "block";
+							        currentDiv.style.display = "none";
+							        div.style.display = "block";
 
-											        currentDiv = div;
-											    }
+							        currentDiv = div;
+							    }
 
-											</script>
+							</script>
 														<!-- <a onclick="showText('text1','text2')" href="javascript:void(0);">Major</a>
 							<div id="text1" class="hide"> </div>
 							<a onclick="showText('text2','text1')" href="javascript:void(0);">Minor</a>
